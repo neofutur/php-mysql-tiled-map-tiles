@@ -1,6 +1,15 @@
 # php-mysql-tiled-map-tiles
 accessing with php and storing with mysql of tiled maps, tilesets and tiles
 
+edit the config file :
+$mapfolder= "map";
+$mapname = "agame_v1.tmx";
+$tilefolder="piko";
+$mysqlhost="localhost";
+$mysqldb="agame";
+$mysqluser="agame";
+$mysqlpass="YOURPASS";
+
 example tilesets all made by me with PikoPixel
 http://twilightedge.com/mac/pikopixel/
 
