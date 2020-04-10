@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" source="comm.tsx"/>
+ <tileset firstgid="21" source="base.tsx"/>
+ <tileset firstgid="41" source="ind.tsx"/>
+ <tileset firstgid="59" source="spec.tsx"/>
+ <tileset firstgid="79" source="green.tsx"/>
+ <tileset firstgid="99" source="serv.tsx"/>
+ <layer name="Tile Layer 1" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzNlTFrwzAQRt3ZKSQhmloMJlsDydYhpXPBY4eEOJ06FBLIkJD8/+rgDo7j5JNw1Hp4CEvi/PydLbdFUbQe55lFAPvGBg5ranStyX2NuI7xe4jgzcAlkOoH+9YBXhGotxd5gNezwiMCdRcKLdYeql9MvzhQ5yWA9OOA30XB8tNyePLMkdpTeUaeEussA2j50Rjjpz1zyK9CtxrnwG86EL9SwOdz+mnrMX6UnZUf0eX3bvh9iPWUsyiWPuedZGIAeX4y4H4/yAmhbNY4nhVgzw6z/MJx09FXwvLbMiw/4i/9+BnW1+9boa8fveM8v6sA5lYGufLT/G6CofkdGSl+OfvbGn7NP+VH34jll6u/Oc7ne3LB3qS+Gy4iMw34fx0YLnBv4hfjkLRc
+  </data>
+ </layer>
+</map>
