@@ -1,5 +1,5 @@
 # php-mysql-tiled-map-tiles
-accessing with php and storing with mysql of tiled maps, tilesets and tiles
+basic tools for accessing with php and storing with mysql tiled ( mapeditor ) maps, tilesets and 32x32 tiles ( for now ). no layer or terrain support yet. feedback and code welcome !
 
 edit the config file :
 
