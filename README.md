@@ -2,9 +2,20 @@
 accessing with php and storing with mysql of tiled maps, tilesets and tiles
 
 edit the config file :
+
 $mapfolder= "map";
+
+where you will put your tiled map ( .tmx ) and other files 
+
 $mapname = "agame_v1.tmx";
+
+the tiles map file
+
 $tilefolder="piko";
+where are your tiles images ( should work with non pico tiles )
+
+and the db config, only needed if you want to test the mysql import feature :
+
 $mysqlhost="localhost";
 $mysqldb="agame";
 $mysqluser="agame";
