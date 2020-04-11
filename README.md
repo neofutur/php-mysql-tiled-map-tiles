@@ -21,6 +21,9 @@ $mysqldb="agame";
 $mysqluser="agame";
 $mysqlpass="YOURPASS";
 
+move the piko folder one level above :
+  mv piko ..
+
 example tilesets all made by me with PikoPixel
 http://twilightedge.com/mac/pikopixel/
 
