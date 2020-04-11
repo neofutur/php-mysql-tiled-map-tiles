@@ -21,8 +21,8 @@ $mysqldb="agame";
 $mysqluser="agame";
 $mysqlpass="YOURPASS";
 
-move the piko folder one level above :
-  mv piko ..
+in the default map image files are stored in ../piko, so you have to move the piko folder one level above :
+  mv piko .. to make it work.
 
 example tilesets all made by me with PikoPixel
 http://twilightedge.com/mac/pikopixel/
