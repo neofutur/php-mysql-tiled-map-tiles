@@ -80,17 +80,20 @@ $firstgid = $tilesets[$i]->attributes()->firstgid;
     $htmltileset = "<table><tr>";
     for ($ii = 0; $ii < count($tiles ); $ii++)
     {
-     $image = $tiles[$ii]->image;
+     $tile = $tiles[$ii];
+     //var_dump($tile);
+     $image = $tile->image;
      $isource = $image->attributes()->source;
      $iwidth = $image->attributes()->width;
      $iheight = $image->attributes()->height;
+     if ( $tiles[$ii]->properties ) $tooltip_base = $tiles[$ii]->properties->property->attributes()->value;
      $tile_id =  $tiles[$ii]->attributes()->id ;
      $tile_id = $tile_id + $firstgid;
      echo "<br> TileId = ".$tile_id." "; 
      echo "source = " . $isource . "  ";
      echo "width = ".$iwidth." "; 
      echo "height = " . $iheight . "  | ";
-     $htmltileset .= "<td><img src=".$isource."></td>";
+     $htmltileset .= "<td><img title='".$tooltip_base ."' src=".$isource."></td>";
      //var_dump($image);
     }
     $htmltileset .= "</tr></table>";

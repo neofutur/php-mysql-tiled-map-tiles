@@ -10,6 +10,8 @@ $xmlmap=$mapfile;
 
 $xml = simplexml_load_file($xmlmap);
 $tilesets = load_tilesets_array($xml);
+$tooltips= load_tooltips_array($xml);
+//var_dump($tooltips);
 //var_dump($tilesets);
 
     $version=$xml->attributes()->version;
@@ -28,7 +30,7 @@ $htmlmapheight = $height;
     $data = $xml->layer->data;
     $data = parse_data($data, $encoding, $compression);
 //    var_dump( $data );
-$chars= str_split($data);
+//$chars= str_split($data);
 //var_dump($chars);
 echo "<table cellspacing=0>";
 

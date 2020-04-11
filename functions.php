@@ -1,6 +1,6 @@
 <?php
 
-function load_tilesets_array($xml)
+function load_tooltips_array($xml, $link=NULL)
 {
  $nextgid=$xml->attributes()->nextobjectid;
  $tilesets = $xml->tileset;
@@ -14,16 +14,73 @@ function load_tilesets_array($xml)
   $htmltileset = "<table><tr>";
   for ($ii = 0; $ii < count($tiles ); $ii++)
   {
+	  //var_dump( $tiles[$ii] );
+   $image = $tiles[$ii]->image;
+   $isource = $image->attributes()->source;
+   $tile_id =  $tiles[$ii]->attributes()->id ;
+   $tile_id = $tile_id + $firstgid;
+   if ( $tiles[$ii]->properties ) $tile_tooltip = $tiles[$ii]->properties->property->attributes()->value;
+
+   $arraytooltips[$tile_id] = $tile_tooltip;
+
+   if ( $link)
+   {
+    $sql=" INSERT INTO tile ( t_tiletype, t_tilepath ) VALUES(".$tile_id.",'".$isource."' )";
+    if (mysqli_query($link, $sql)) { echo " . "; } else { echo "Error: " . $sql . "<br>" . mysqli_error($conn); }
+   }
+
+
+  }
+  if ( $link )
+  {
+    $sql = "INSERT INTO tileset( ts_source,ts_firstgid ) VALUES('".$filetileset."',".$firstgid.") ";
+    if (mysqli_query($link, $sql)) { echo " . "; } else { echo "Error: " . $sql . "<br>" . mysqli_error($conn); }
+  }
+ 
+ }
+ return $arraytooltips;
+}
+
+function load_tilesets_array($xml, $link=NULL)
+{
+ $nextgid=$xml->attributes()->nextobjectid;
+ $tilesets = $xml->tileset;
+ for ($i = 0; $i < count($tilesets ); $i++)
+ {
+  //var_dump($tilesets[$i]);
+  $firstgid = $tilesets[$i]->attributes()->firstgid;
+  $filetileset="map/".$tilesets[$i]->attributes()->source;
+  $xmltileset = simplexml_load_file($filetileset);
+  $tiles = $xmltileset->tile;
+  $htmltileset = "<table><tr>";
+  for ($ii = 0; $ii < count($tiles ); $ii++)
+  {
+	  //var_dump( $tiles[$ii] );
    $image = $tiles[$ii]->image;
    $isource = $image->attributes()->source;
    $tile_id =  $tiles[$ii]->attributes()->id ;
    $tile_id = $tile_id + $firstgid;
    $arraytilesets[$tile_id] = $isource;
+
+   if ( $link)
+   {
+    $sql=" INSERT INTO tile ( t_tiletype, t_tilepath ) VALUES(".$tile_id.",'".$isource."' )";
+    if (mysqli_query($link, $sql)) { echo " . "; } else { echo "Error: " . $sql . "<br>" . mysqli_error($conn); }
+   }
+
+
   }
+  if ( $link )
+  {
+    $sql = "INSERT INTO tileset( ts_source,ts_firstgid ) VALUES('".$filetileset."',".$firstgid.") ";
+    if (mysqli_query($link, $sql)) { echo " . "; } else { echo "Error: " . $sql . "<br>" . mysqli_error($conn); }
+  }
+ 
  }
  return $arraytilesets;
 }
 
+/*
 function decompress ( $data, $compression)
 {
 $data2="";
@@ -50,6 +107,7 @@ echo "data = ".$data2."<br>";
  return $data2;
 
 }
+*/
 
 function parse_data($data, $encoding='', $compression='') {
         if($encoding=='base64') {
