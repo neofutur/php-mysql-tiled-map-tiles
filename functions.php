@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @param SimpleXMLElement $xml
+ * @param ?mysqli          $link
+ *
+ * @return array<int, string>
+ */
 function load_tooltips_array($xml, $link = null)
 {
     $nextgid = $xml->attributes()->nextobjectid;
@@ -44,6 +50,12 @@ function load_tooltips_array($xml, $link = null)
     return $arraytooltips;
 }
 
+/**
+ * @param SimpleXMLElement $xml
+ * @param ?mysqli          $link
+ *
+ * @return array<int, string>
+ */
 function load_tilesets_array($xml, $link = null)
 {
     $nextgid = $xml->attributes()->nextobjectid;
@@ -83,6 +95,13 @@ function load_tilesets_array($xml, $link = null)
     return $arraytilesets;
 }
 
+/**
+ * @param string $data
+ * @param string $encoding
+ * @param string $compression
+ *
+ * @return string
+ */
 function parse_data($data, $encoding = '', $compression = '')
 {
     if ($encoding == 'base64') {
