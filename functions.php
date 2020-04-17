@@ -29,6 +29,8 @@ function load_tooltips_array($xml, $link = null)
             $arraytooltips[$tile_id] = $tile_tooltip;
 
             if ($link) {
+                $tile_id = mysqli_real_escape_string($link, $tile_id);
+                $isource = mysqli_real_escape_string($link, $isource);
                 $sql = " INSERT INTO tile ( t_tiletype, t_tilepath ) VALUES(".$tile_id.",'".$isource."' )";
                 if (!mysqli_query($link, $sql)) {
                     echo "Error: ".$sql."<br>".mysqli_error($conn);
@@ -38,6 +40,8 @@ function load_tooltips_array($xml, $link = null)
             }
         }
         if ($link) {
+            $filetileset = mysqli_real_escape_string($link, $filetileset);
+            $firstgid = mysqli_real_escape_string($link, $firstgid);
             $sql = "INSERT INTO tileset( ts_source,ts_firstgid ) VALUES('".$filetileset."',".$firstgid.") ";
             if (!mysqli_query($link, $sql)) {
                 echo "Error: ".$sql."<br>".mysqli_error($conn);
@@ -74,6 +78,8 @@ function load_tilesets_array($xml, $link = null)
             $arraytilesets[$tile_id] = $isource;
 
             if ($link) {
+                $tile_id = mysqli_real_escape_string($link, $tile_id);
+                $isource = mysqli_real_escape_string($link, $isource);
                 $sql = " INSERT INTO tile ( t_tiletype, t_tilepath ) VALUES(".$tile_id.",'".$isource."' )";
                 if (!mysqli_query($link, $sql)) {
                     echo "Error: ".$sql."<br>".mysqli_error($conn);
@@ -83,6 +89,8 @@ function load_tilesets_array($xml, $link = null)
             }
         }
         if ($link) {
+            $filetileset = mysqli_real_escape_string($link, $filetileset);
+            $firstgid = mysqli_real_escape_string($link, $firstgid);
             $sql = "INSERT INTO tileset( ts_source,ts_firstgid ) VALUES('".$filetileset."',".$firstgid.") ";
             if (!mysqli_query($link, $sql)) {
                 echo "Error: ".$sql."<br>".mysqli_error($conn);

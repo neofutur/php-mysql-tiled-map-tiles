@@ -42,6 +42,7 @@ for ($i = 0; $i < 3200; $i += 4) {
     $tile_id = $tilenumber + $firstgid;
     $imagepath = $tilesets[$tile_id];
 
+    $tile_id = mysqli_real_escape_string($link, $tile_id);
     $sql = "INSERT INTO cell( c_x, c_y, c_tile_id, tooltip_base ) VALUES(".$x.",".$y.",".$tile_id.", 'not yet') ";
     if (!mysqli_query($link, $sql)) {
         echo "Error: ".$sql."<br>".mysqli_error($conn);
