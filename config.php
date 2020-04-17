@@ -7,6 +7,3 @@ $mysqlhost="localhost";
 $mysqldb="agame";
 $mysqluser="agame";
 $mysqlpass="YOURPASS";
-
-
-?>

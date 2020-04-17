@@ -104,5 +104,3 @@ $tilesetsmapcode.="<br><br>";
 }
 echo "<br><br><b> all tiles  : </b><br><br>";
 echo $tilesetsmapcode; 
-?>
-

@@ -165,5 +165,3 @@ function parse_data($data, $encoding='', $compression='') {
         }
         return $data;
 }
-
-?>

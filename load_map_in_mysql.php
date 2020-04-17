@@ -77,6 +77,3 @@ $finalInt = hexdec($substring);
 */
 
 //echo $finalInt;
-
-?>
-
