@@ -24,20 +24,20 @@ function load_tooltips_array($xml, $link = null)
 
             if ($link) {
                 $sql = " INSERT INTO tile ( t_tiletype, t_tilepath ) VALUES(".$tile_id.",'".$isource."' )";
-                if (mysqli_query($link, $sql)) {
-                    echo " . ";
-                } else {
+                if (!mysqli_query($link, $sql)) {
                     echo "Error: ".$sql."<br>".mysqli_error($conn);
+                    continue;
                 }
+                echo " . ";
             }
         }
         if ($link) {
             $sql = "INSERT INTO tileset( ts_source,ts_firstgid ) VALUES('".$filetileset."',".$firstgid.") ";
-            if (mysqli_query($link, $sql)) {
-                echo " . ";
-            } else {
+            if (!mysqli_query($link, $sql)) {
                 echo "Error: ".$sql."<br>".mysqli_error($conn);
+                continue;
             }
+            echo " . ";
         }
     }
 
@@ -63,20 +63,20 @@ function load_tilesets_array($xml, $link = null)
 
             if ($link) {
                 $sql = " INSERT INTO tile ( t_tiletype, t_tilepath ) VALUES(".$tile_id.",'".$isource."' )";
-                if (mysqli_query($link, $sql)) {
-                    echo " . ";
-                } else {
+                if (!mysqli_query($link, $sql)) {
                     echo "Error: ".$sql."<br>".mysqli_error($conn);
+                    continue;
                 }
+                echo " . ";
             }
         }
         if ($link) {
             $sql = "INSERT INTO tileset( ts_source,ts_firstgid ) VALUES('".$filetileset."',".$firstgid.") ";
-            if (mysqli_query($link, $sql)) {
-                echo " . ";
-            } else {
+            if (!mysqli_query($link, $sql)) {
                 echo "Error: ".$sql."<br>".mysqli_error($conn);
+                continue;
             }
+            echo " . ";
         }
     }
 
