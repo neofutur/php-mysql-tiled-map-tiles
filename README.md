@@ -1,43 +1,49 @@
 # php-mysql-tiled-map-tiles
-basic tools for accessing with php and storing with mysql tiled ( mapeditor ) maps, tilesets and 32x32 tiles ( for now ). no layer or terrain support yet. feedback and code welcome !
 
-edit the config file :
+Basic tools for accessing storing [Tiled](https://www.mapeditor.org/) with MySQL using PHP, tilesets and 32x32 tiles (for now). Layers and terrain are not support yet. Feedback and code is welcome!
 
-$mapfolder= "map";
+## Setting up the project
 
-where you will put your tiled map ( .tmx ) and other files 
+Set `$mapname` to the path of your Tiled-map (.tmx):
 
-$mapname = "agame_v1.tmx";
+    $mapfolder= "map";
 
-the tiles map file
+Set `$mapname` to the name of your Tiles-map file:
 
-$tilefolder="piko";
-where are your tiles images ( should work with non pico tiles )
+    $mapname = "agame_v1.tmx";
 
-and the db config, only needed if you want to test the mysql import feature :
+Set `$tilefolder` to point to the path of your tiles images (should work with non pico tiles):
 
-$mysqlhost="localhost";
-$mysqldb="agame";
-$mysqluser="agame";
-$mysqlpass="YOURPASS";
+    $tilefolder="piko";
 
-in the default map image files are stored in ../piko, so you have to move the piko folder one level above :
-  mv piko .. to make it work.
+Set the database configuration (this is only needed if you want to test the mysql import feature):
 
-example tilesets all made by me with PikoPixel
-http://twilightedge.com/mac/pikopixel/
+    $mysqlhost="localhost";
+    $mysqldb="agame";
+    $mysqluser="agame";
+    $mysqlpass="YOURPASS";
 
-map made by me with tiled
-https://www.mapeditor.org/
+By default the map image files are stored in `../piko`, so you have to move the piko folder up one level for it to wokr:
 
-importing this with php , diplaying it, and storing it in a mysql database.
+    mv piko ..
 
-only basic support, this is more like coding examples to access and display tiled maps, in php.
+## About
 
-for now only two features : 
-read and display map tilesets : 
-/read_map_tilesets.php
-and show the full tiled map : 
-/show_map.php
+The example are all made by me, using [PikoPixel](http://twilightedge.com/mac/pikopixel/) for the tilesets and [Tiled](https://www.mapeditor.org/) for the maps.
 
-coming soon, reading and importing everything into mysql.
+This project is written in PHP and support importing, diplaying, and storing maps in a MySQL database.
+
+The implementation is pretty basic, this so see this more like a coding examples of how to access and display tiled maps in PHP.
+
+## Features
+### Read and display map tilesets
+
+    ./read_map_tilesets.php
+
+### Show the full tiled map
+
+    ./show_map.php
+
+### Work in progress
+
+Reading, and importing everything into MySQL.
