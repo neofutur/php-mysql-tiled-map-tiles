@@ -36,28 +36,13 @@ $y = 1;
 
 for ($i = 0; $i < 3200; $i += 4) {
     $n = ($i / 4) + 1;
-    /*
-     $rest=($n+1) % 40;
-     $tableline= ceil($n/$width);
-    */
     $array32 = unpack("V", $data, $i);
     $tilenumber = $array32[1];
-    // echo "<br> ".$n." : ".$tilenumber." X:".$x." Y:".$y."  " ;
 
     $tile_id = $tilenumber + $firstgid;
-    // echo $tile_id;
     $imagepath = $tilesets[$tile_id];
-    // echo $imagepath."<br>";
-    /*
-    if ( $rest == 0 && $i != 0)
-    {
-     echo $htmlline."</tr>";
-     $htmlline ="";
-    }
-     */
 
     $sql = "INSERT INTO cell( c_x, c_y, c_tile_id, tooltip_base ) VALUES(".$x.",".$y.",".$tile_id.", 'not yet') ";
-    //echo $sql;
     if (mysqli_query($link, $sql)) {
         echo " . ";
     } else {
@@ -71,12 +56,5 @@ for ($i = 0; $i < 3200; $i += 4) {
         $x++;
     }
 }
-echo "</table>";
-/*
-/*
-$substring = substr($data,0,4);
-//echo $substring;
-$finalInt = hexdec($substring);
-*/
 
-//echo $finalInt;
+echo "</table>";
