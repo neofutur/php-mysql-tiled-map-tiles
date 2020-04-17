@@ -46,14 +46,12 @@ var_dump($data);
 
 $tilesetsmapcode = "<table><tr>";
 
-$tilesets = $xml->tileset;
-
-for ($i = 0; $i < count($tilesets); $i++) {
-    echo "<br><br><b>Tileset Source: </b> ".$tilesets[$i]->attributes()->source."    ";
-    $firstgid = $tilesets[$i]->attributes()->firstgid;
+foreach ($xml->tileset as $tileset) {
+    echo "<br><br><b>Tileset Source: </b> ".$tileset->attributes()->source."    ";
+    $firstgid = $tileset->attributes()->firstgid;
     echo 'firstgid : '.$firstgid.'    ';
 
-    $filetileset = "map/".$tilesets[$i]->attributes()->source;
+    $filetileset = "map/".$tileset->attributes()->source;
     $xmltileset = simplexml_load_file($filetileset);
     $tname = $xmltileset->attributes()->name;
     echo " name = ".$tname;
@@ -67,16 +65,15 @@ for ($i = 0; $i < count($tilesets); $i++) {
     echo " columns = ".$tcolumns."<br>";
     $tiles = $xmltileset->tile;
     $htmltileset = "<table><tr>";
-    for ($ii = 0; $ii < count($tiles); $ii++) {
-        $tile = $tiles[$ii];
+    foreach ($tiles as $tile) {
         $image = $tile->image;
         $isource = $image->attributes()->source;
         $iwidth = $image->attributes()->width;
         $iheight = $image->attributes()->height;
-        if ($tiles[$ii]->properties) {
-            $tooltip_base = $tiles[$ii]->properties->property->attributes()->value;
+        if ($tile->properties) {
+            $tooltip_base = $tile->properties->property->attributes()->value;
         }
-        $tile_id = $tiles[$ii]->attributes()->id;
+        $tile_id = $tile->attributes()->id;
         $tile_id = $tile_id + $firstgid;
         echo "<br> TileId = ".$tile_id." ";
         echo "source = ".$isource."  ";

@@ -3,20 +3,21 @@
 function load_tooltips_array($xml, $link = null)
 {
     $nextgid = $xml->attributes()->nextobjectid;
-    $tilesets = $xml->tileset;
-    for ($i = 0; $i < count($tilesets); $i++) {
-        $firstgid = $tilesets[$i]->attributes()->firstgid;
-        $filetileset = "map/".$tilesets[$i]->attributes()->source;
+
+    foreach ($xml->tileset as $tileset) {
+        $firstgid = $tileset->attributes()->firstgid;
+        $filetileset = "map/".$tileset->attributes()->source;
         $xmltileset = simplexml_load_file($filetileset);
-        $tiles = $xmltileset->tile;
         $htmltileset = "<table><tr>";
-        for ($ii = 0; $ii < count($tiles); $ii++) {
-            $image = $tiles[$ii]->image;
+
+        foreach ($xmltileset->tile as $tile) {
+            $image = $tile->image;
             $isource = $image->attributes()->source;
-            $tile_id = $tiles[$ii]->attributes()->id;
+            $tile_id = $tile->attributes()->id;
             $tile_id = $tile_id + $firstgid;
-            if ($tiles[$ii]->properties) {
-                $tile_tooltip = $tiles[$ii]->properties->property->attributes()->value;
+
+            if ($tile->properties) {
+                $tile_tooltip = $tile->properties->property->attributes()->value;
             }
 
             $arraytooltips[$tile_id] = $tile_tooltip;
@@ -46,17 +47,17 @@ function load_tooltips_array($xml, $link = null)
 function load_tilesets_array($xml, $link = null)
 {
     $nextgid = $xml->attributes()->nextobjectid;
-    $tilesets = $xml->tileset;
-    for ($i = 0; $i < count($tilesets); $i++) {
-        $firstgid = $tilesets[$i]->attributes()->firstgid;
-        $filetileset = "map/".$tilesets[$i]->attributes()->source;
+
+    foreach ($xml->tileset as $tileset) {
+        $firstgid = $tileset->attributes()->firstgid;
+        $filetileset = "map/".$tileset->attributes()->source;
         $xmltileset = simplexml_load_file($filetileset);
-        $tiles = $xmltileset->tile;
         $htmltileset = "<table><tr>";
-        for ($ii = 0; $ii < count($tiles); $ii++) {
-            $image = $tiles[$ii]->image;
+
+        foreach ($xmltileset->tile as $tile) {
+            $image = $tile->image;
             $isource = $image->attributes()->source;
-            $tile_id = $tiles[$ii]->attributes()->id;
+            $tile_id = $tile->attributes()->id;
             $tile_id = $tile_id + $firstgid;
             $arraytilesets[$tile_id] = $isource;
 
@@ -115,20 +116,20 @@ function parse_data($data, $encoding = '', $compression = '')
     }
 
     switch (strtolower($compression)) {
-                case 'zlib':
-                        $data = gzuncompress($data);
-                       break;
-                case 'gzip':
-                        $data = gzdecode($data);
-                        break;
-                case 'bzip2':
-                case 'bz2':
-                        $data = bzdecompress($data);
-                        break;
-                case 'none':
-                default:
-                        break;
-        }
+        case 'zlib':
+            $data = gzuncompress($data);
+           break;
+        case 'gzip':
+            $data = gzdecode($data);
+            break;
+        case 'bzip2':
+        case 'bz2':
+            $data = bzdecompress($data);
+            break;
+        case 'none':
+        default:
+            break;
+    }
 
     return $data;
 }
